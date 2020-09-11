@@ -1207,7 +1207,11 @@ class Google_Client
       $credentials->setSub($sub);
     }
 
-    return $credentials;
+    return new FetchAuthTokenCache(
+      $creds,
+      $this->config['cache_config'],
+      $this->getCache()
+    );
   }
 
   protected function getAuthHandler()
