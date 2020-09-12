@@ -37,6 +37,15 @@ class Google_AuthHandler_Guzzle6AuthHandler
           $this->cache
       );
     }
+
+    return $this->attachCredentialsCache($http, $credentials, $tokenCallback);
+  }
+
+  public function attachCredentialsCache(
+      ClientInterface $http,
+      FetchAuthTokenCache $credentials,
+      callable $tokenCallback = null
+  ) {
     // if we end up needing to make an HTTP request to retrieve credentials, we
     // can use our existing one, but we need to throw exceptions so the error
     // bubbles up.
