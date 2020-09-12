@@ -422,6 +422,8 @@ class Google_Client
     } elseif ($key = $this->config['developer_key']) {
       $http = $authHandler->attachKey($http, $key);
     }
+
+    return $http;
   }
 
   /**
@@ -1168,6 +1170,9 @@ class Google_Client
     return new Client($options);
   }
 
+  /**
+   * @return FetchAuthTokenCache
+   */
   private function createApplicationDefaultCredentials()
   {
     $scopes = $this->prepareScopes();
