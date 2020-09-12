@@ -268,8 +268,9 @@ class Google_Client
         'OAuth2 access token refresh with Signed JWT assertion grants.'
     );
 
-    $httpHandler = HttpHandlerFactory::build($authHttp);
     $credentials = $this->createApplicationDefaultCredentials();
+
+    $httpHandler = HttpHandlerFactory::build($authHttp);
     $creds = $credentials->fetchAuthToken($httpHandler);
     if ($creds && isset($creds['access_token'])) {
       $creds['created'] = time();
